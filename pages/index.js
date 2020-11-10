@@ -11,7 +11,7 @@ function HomePage() {
 
   async function loadUsers() {
     const users = await api.get('users');
-    console.log(users);
+    
     setUsers(users.data);
   }
 
