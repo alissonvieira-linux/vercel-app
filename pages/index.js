@@ -1,22 +1,27 @@
 import { useEffect, useState } from 'react';
 
 function HomePage() {
-  const [userInfo, setUserInfo] = useState({});
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
-    fetch('https://api.github.com/users/alissonvieira-linux')
+    fetch('https://vieiratech.herokuapp.com/users')
       .then(response => response.json())
       .then(data => {
-        setUserInfo(data);
+        setUsers(data);
       });
   }, []);
 
   return (
     <div>
-      <p>Name: <strong>{userInfo.name}</strong></p>
-      <p>Username: <strong>{userInfo.login}</strong></p>
-      <p>Bio: <strong>{userInfo.bio}</strong></p>
-      <p>City: <strong>{userInfo.location}</strong></p>
+      <h1>Listagem de usuários consumindo API hospedada no Heroku</h1>
+      {
+        users.map(user => (
+          <>
+            <p>Name: <strong>{user.name}</strong></p>
+            <p>Age: <strong>{user.age}</strong></p>
+          </>
+        ))
+      }
     </div>
   );
 }
