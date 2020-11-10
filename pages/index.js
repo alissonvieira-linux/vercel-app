@@ -14,7 +14,7 @@ function HomePage() {
     
     setUsers(users.data);
   }
-
+  
   return (
     <div>
       <h1>Listagem de usuários consumindo API hospedada no Heroku</h1>
