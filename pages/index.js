@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 
+import api from '../src/services/api';
+
 function HomePage() {
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('https://vieiratech.herokuapp.com/users')
-      .then(response => response.json())
-      .then(data => {
-        setUsers(data);
-      });
+    loadUsers();
   }, []);
+
+  async function loadUsers() {
+    const users = await api.get('users');
+
+    setUsers(users);
+  }
 
   return (
     <div>
